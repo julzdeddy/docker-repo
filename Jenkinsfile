@@ -3,11 +3,7 @@ pipeline {
         registry = 'testnexus.npfhq.com:9443/server'
         IMAGE_URL_WITH_TAG = "${registry}:${BUILD_NUMBER}"
     }
-    agent {
-        docker {
-            image 'nginx:latest'
-        }
-    }
+    agent {label 'docker-slave-node'}
     
     stages {
         stage('Push to Docker Registry') {

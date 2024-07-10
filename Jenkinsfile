@@ -8,7 +8,8 @@ pipeline {
     stages {
         stage('Push to Docker Registry') {
             steps {
-                sh "docker build -t ${IMAGE_URL_WITH_TAG} ." // Ensure Dockerfile is in the current directory
+                sh "docker login testnexus.npfhq.com:9443 -u admin -p 1"
+                sh "docker build -t ${IMAGE_URL_WITH_TAG} ." 
                 sh "docker push ${IMAGE_URL_WITH_TAG}"
                 sh "docker rmi -f ${IMAGE_URL_WITH_TAG}"
             }

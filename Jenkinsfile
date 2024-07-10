@@ -9,14 +9,16 @@ pipeline {
         }
     }
     
+    stages {
         stage('Push to Docker Registry') {
             steps {
-                sh 'docker build -t ${IMAGE_URL_WITH_TAG} .' // Ensure Dockerfile is in the current directory
-                sh 'docker push ${IMAGE_URL_WITH_TAG}'
-                sh 'docker rmi -f ${IMAGE_URL_WITH_TAG}'
+                sh "docker build -t ${IMAGE_URL_WITH_TAG} ." // Ensure Dockerfile is in the current directory
+                sh "docker push ${IMAGE_URL_WITH_TAG}"
+                sh "docker rmi -f ${IMAGE_URL_WITH_TAG}"
             }
         }
     }
+    
     post {
         always {
             // Clean up workspace

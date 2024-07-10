@@ -5,17 +5,10 @@ pipeline {
     }
     agent {
         docker {
-            image 'docker:20.10.24-dind'
-            args '--privileged'
+            image 'nginx:latest'
         }
     }
     
-    stages {
-        stage('Verify Workspace') {
-            steps {
-                sh 'ls -la'
-            }
-        }
         stage('Push to Docker Registry') {
             steps {
                 sh 'docker build -t ${IMAGE_URL_WITH_TAG} .' // Ensure Dockerfile is in the current directory

@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        registry = 'testnexus.npfhq.com:9443/server'
+        registry = 'nexus.hcb:9443/server'
         IMAGE_URL_WITH_TAG = "${registry}:${BUILD_NUMBER}"
     }
     agent {

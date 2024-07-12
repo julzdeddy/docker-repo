@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        registry = 'nexus.hcb:9443/hcb/dev/server'
+        registry = 'nexus.hcb:9443/hcb/dev/test'
         IMAGE_URL_WITH_TAG = "${registry}:${BUILD_NUMBER}"
     }
     agent {
